@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deadline Hero</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="hero">
+        
+            <h1 id="greeting">🚀 Deadline Hero</h1>
+        
+            <div class="theme-container">
+                <button id="themeToggle">🌙 Dark Mode</button>
+            </div>
+        
+            <p class="tagline">
+                Plan Smarter. Study Better. Finish On Time.
+            </p>
+        
+            <p class="description">
+                Your personal AI productivity coach that creates smart study plans,
+                prioritizes tasks and helps you stay on track every day.
+            </p>
+        
+        </div>
+        <textarea id="task" rows="7" maxlength="500" oninput="updateCount()"></textarea>
+        <p id="charCount">0 / 500 characters</p>
+
+• Physics exam tomorrow
+• Maths assignment due tonight
+• Practice DSA for 2 hours
+
+Type all your tasks here..."></textarea>
+
+        <button onclick="planDay()">
+            🚀 Generate AI Study Plan
+        </button>
+
+        <button onclick="startListening()">
+            🎙️Voice Input
+        </button>
+
+        <button onclick="downloadPDF()">
+            📄 Download PDF
+        </button>
+
+        <button onclick="copyPlan()">
+            🗒️ Copy Plan
+        </button>
+
+        <button onclick="readPlan()">
+            🔊 Read Plan
+        </button>
+
+        <button onclick="clearTasks()">
+            🗑️ clear Tasks
+        </button>
+
+        <div class="progress-section">
+        
+            <h3>📈 Daily Progress</h3>
+        
+            <progress id="progressBar" value="0" max="100"></progress>
+        
+            <p id="progressText">0% Complete</p>
+        
+        </div>
+
+        <div id="taskTracker"></div>
+        
+        <div id="result"></div>
+
+
+        <div id="result"></div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+<footer> Made with ❤️ by Prachi | DeadlineHero © 2026
+
+</footer>
+
+</body>
+
+</html>
+
