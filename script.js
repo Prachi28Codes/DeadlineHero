@@ -86,8 +86,9 @@ lastRequestTime = now;
 `;
     updateProgress(25);
     const tasks = task
-    .split("\n")
-    .filter(t => t.trim() !== "");
+    .split(/\n|,/)
+    .map(t => t.trim())
+    .filter(t => t !== "");
 
 createTaskTracker(tasks);
     localStorage.setItem("lastPlan",result.innerHTML);
@@ -226,7 +227,7 @@ function createTaskTracker(tasks) {
         tracker.innerHTML += `
             <div class="task-item">
                 <input type="checkbox" 
-                onchange="taskCompleted(this, $ {tasks.lenght})">
+                onchange="taskCompleted(this, ${tasks.length})">
                 ${task}
             </div>
         `;
@@ -236,14 +237,13 @@ let completedTasks = 0;
 
 function taskCompleted(checkbox, totalTasks) {
 
-    if (checkbox.checked) {
-        completedTasks++;
-    } else {
-        completedTasks--;
-    }
+    const checkedTasks =
+        document.querySelectorAll(
+            '#taskTracker input[type="checkbox"]:checked'
+        ).length;
 
     const percent =
-        Math.round((completedTasks / totalTasks) * 100);
+        Math.round((checkedTasks / totalTasks) * 100);
 
     updateProgress(percent);
 }
