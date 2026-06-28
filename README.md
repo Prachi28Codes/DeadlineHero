@@ -25,6 +25,9 @@ Deadline Hero is an AI-powered productivity web app that helps students manage s
 - Express.js
 - Google Gemini API
 
+  AI integration powered by Google Gemini
+  API (Google AI ecosystem)
+
 ---
 
 ## 🎯 Purpose
