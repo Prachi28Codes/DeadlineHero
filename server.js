@@ -95,7 +95,20 @@ Do NOT skip any task.
 
 # ⭐ PRODUCTIVITY SCORE
 (Give a score out of 100 with one-line reasoning.)
+# 📋 TASKS
+Extract all actionable tasks from the user's input.
 
+Rules:
+- One task per line.
+- No bullets.
+- No numbering.
+- Keep each task short and clear.
+
+Example:
+
+Revise Physics
+Solve Maths Assignment
+Read Chemistry Notes
 Keep the response clear, structured and attractive.
     `);
 

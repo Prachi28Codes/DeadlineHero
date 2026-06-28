@@ -84,9 +84,10 @@ lastRequestTime = now;
     }
 </div>
 `;
+localStorage.setItem("lastPlan",result.innerHTML);
     updateProgress(25);
     const tasks = task
-    .split(/\n|,/)
+    .split(/\n|,|\s+and\s+|\s*&\s*/i)
     .map(t => t.trim())
     .filter(t => t !== "");
 
@@ -181,33 +182,37 @@ window.onload = function () {
             .innerHTML = savedPlan;
     }
 };
-function startListening() {
+function startVoice() {
 
-    const recognition =
-        new (window.SpeechRecognition ||
-             window.webkitSpeechRecognition)();
+    const SpeechRecognition =
+        window.SpeechRecognition || window.webkitSpeechRecognition;
+
+    if (!SpeechRecognition) {
+        alert("Speech recognition not supported");
+        return;
+    }
+
+    const recognition = new SpeechRecognition();
 
     recognition.lang = "en-US";
-
-    recognition.start();
+    recognition.interimResults = false;
 
     recognition.onresult = function(event) {
 
-        const speechText =
-            event.results[0][0].transcript;
+        const text = event.results[0][0].transcript;
 
-        const textarea =
-            document.getElementById("task");
+        const input = document.getElementById("task");
 
-        textarea.value += speechText;
+        input.value += text + " ";
 
         updateCount();
     };
 
     recognition.onerror = function(event) {
-    alert("Error: " + event.error);
-    console.log(event);
-};
+        alert("Voice error: " + event.error);
+    };
+
+    recognition.start();
 }
 function updateProgress(percent) {
     document.getElementById("progressBar").value = percent;
@@ -231,7 +236,9 @@ function createTaskTracker(tasks) {
                 ${task}
             </div>
         `;
+
     });
+    localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 let completedTasks = 0;
 
@@ -295,3 +302,26 @@ END:VCALENDAR
     a.download = "event.ics";
     a.click();
 }
+window.onload = function () {
+    const saved = localStorage.getItem("tasks");
+
+    if (saved) {
+        const tasks = JSON.parse(saved);
+        createTaskTracker(tasks);
+    }
+};
+window.onload = function () {
+
+    const savedPlan = localStorage.getItem("lastPlan");
+
+    if (savedPlan) {
+        document.getElementById("result").innerHTML = savedPlan;
+    }
+
+    const savedTasks = localStorage.getItem("tasks");
+
+    if (savedTasks) {
+        const tasks = JSON.parse(savedTasks);
+        createTaskTracker(tasks);
+    }
+};
