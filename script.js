@@ -54,7 +54,7 @@ lastRequestTime = now;
             `;
 
     try {
-        const response = await fetch("http://localhost:3000/plan", {
+        const response = await fetch("/plan", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
