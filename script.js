@@ -274,3 +274,24 @@ function updateGreeting(){
 }
 
 updateGreeting();
+function addToCalendar(title, description, date) {
+    const event = `
+BEGIN:VCALENDAR
+VERSION:2.0
+BEGIN:VEVENT
+SUMMARY:${title}
+DESCRIPTION:${description}
+DTSTART:${date}
+DTEND:${date}
+END:VEVENT
+END:VCALENDAR
+`;
+
+    const blob = new Blob([event], { type: "text/calendar" });
+    const url = window.URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "event.ics";
+    a.click();
+}
