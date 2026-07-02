@@ -3,7 +3,7 @@ const themeToggle = document.getElementById("themeToggle");
 // Check if user has a saved theme
 if (localStorage.getItem("theme") === "dark") {
     document.body.classList.add("dark-mode");
-    themeToggle.textContent = "☀️ Light Mode";
+    themeToggle.textContent = "☀️";
 }
 
 // Toggle theme when button is clicked
@@ -12,10 +12,10 @@ themeToggle.addEventListener("click", () => {
 
     if (document.body.classList.contains("dark-mode")) {
         localStorage.setItem("theme", "dark");
-        themeToggle.textContent = "☀️ Light Mode";
+        themeToggle.textContent = "☀️";
     } else {
         localStorage.setItem("theme", "light");
-        themeToggle.textContent = "🌙 Dark Mode";
+        themeToggle.textContent = "🌙";
     }
 });
 let lastRequestTime = 0;
