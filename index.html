@@ -9,20 +9,24 @@
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+    <!-- Google Fonts -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist+Pixel&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
     <div class="container">
-
+        <div class="button-container">
+            <button id="themeToggle"></button>
+        </div>
+        
         <div class="hero">
         
-            <h1 id="greeting">🚀 Deadline Hero</h1>
-        
-            <div class="theme-container">
-                <button id="themeToggle">🌙 Dark Mode</button>
-            </div>
-        
+            <h1 id="greeting"></h1>
+
             <p class="tagline">
                 Plan Smarter. Study Better. Finish On Time.
             </p>
@@ -33,49 +37,41 @@
             </p>
         
         </div>
-        <textarea id="task" rows="7" maxlength="500" oninput="updateCount()"></textarea>
+        <p class="example-promt"> <span style="font-size: 20px;">Sample Prompts: </span>• Physics exam tomorrow • Maths assignment due tonight • Practice DSA for 2 hours</p>
+        <p>Type all your tasks here...</p>
+        <textarea class="textarea" id="task" rows="7" maxlength="500" oninput="updateCount()"></textarea>
         <p id="charCount">0 / 500 characters</p>
 
-• Physics exam tomorrow
-• Maths assignment due tonight
-• Practice DSA for 2 hours
-
-Type all your tasks here..."></textarea>
-
-        <button onclick="planDay()">
+        <button class="action-button" onclick="planDay()">
             🚀 Generate AI Study Plan
         </button>
 
-        <button onclick="startVoice()">🎤 Voice input</button>
+        <button class="action-button"  onclick="startVoice()">🎤 Voice input</button>
 
-        <button onclick="downloadPDF()">
+        <button class="action-button"  onclick="downloadPDF()">
             📄 Download PDF
         </button>
 
-        <button onclick="copyPlan()">
+        <button class="action-button"  onclick="copyPlan()">
             🗒️ Copy Plan
         </button>
 
-        <button onclick="readPlan()">
+        <button class="action-button"  onclick="readPlan()">
             🔊 Read Plan
         </button>
 
-        <button onclick="addToCalendar('Study Session', 'AI Study Plan Task', '20260101T090000Z')">
+        <button class="action-button" onclick="addToCalendar('Study Session', 'AI Study Plan Task', '20260101T090000Z')">
             📅 Add to Calendar
         </button>
 
-        <button onclick="clearTasks()">
+        <button class="action-button"  onclick="clearTasks()">
             🗑️ clear Tasks
         </button>
 
         <div class="progress-section">
-        
             <h3>📈 Daily Progress</h3>
-        
             <progress id="progressBar" value="0" max="100"></progress>
-        
             <p id="progressText">0% Complete</p>
-        
         </div>
 
         <div id="taskTracker"></div>

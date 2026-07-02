@@ -25,60 +25,60 @@
 
 }
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    margin: 0;
+    font-family: "Geist Pixel", sans-serif;
+    margin: 40px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-
     background: var(--bg-color);
     color: var(--text-color);
-
     transition: background .4s, color .4s;
 }
+
 .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 90%;
     max-width: 780px;
-    padding: 35px;
-
+    padding: 40px;
     background: var(--card-color);
-
     backdrop-filter: blur(15px);
-
     border-radius: 25px;
-
     border: 1px solid rgba(255, 255, 255, .3);
-
     box-shadow: 0 20px 40px rgba(0, 0, 0, .12);
-
     transition: .4s;
+
 }
+
 h1 {
     text-align: center;
 }
 
 textarea {
-
-    width: 100%;
+    font-family: "Geist Pixel", sans-serif;
+    width: 95%;
     padding: 15px;
-
     font-size: 16px;
-
     border-radius: 10px;
-
     border: 1px solid #cbd5e1;
-
     resize: vertical;
-
     background: var(--card-bg);
+    color: var(--text-color);   
+}
 
-    color: var(--text-color);
+#charCount{
+    align-self: last baseline;
+}
 
+.example-promt{
+    align-self: first baseline;
 }
 
 button {
-    margin-top: 15px;
+    /* margin-top: 15px; */
     width: 100%;
     padding: 15px;
     font-size: 17px;
@@ -89,7 +89,11 @@ button {
     cursor: pointer;
     transition: .3s;
 }
+.action-button{
+    margin: 5px;
+    font-family: "Geist Pixel", sans-serif;
 
+}
 button:hover {
     background: var(--button-hover);
 }
@@ -108,7 +112,7 @@ pre {
     text-align: center;
     font-size: 18px;
     color: var(--text-color);
-    margin-bottom: 25px;
+    /* margin-bottom: 25px; */
 }
 
 h2 {
@@ -122,10 +126,6 @@ textarea::placeholder {
     color: var(--text-color);
     font-size: 15px;
     line-height: 1.6;
-}
-
-button {
-    transition: .3s;
 }
 
 button:not(#themeToggle):hover {
@@ -149,10 +149,14 @@ button:not(#themeToggle):hover {
         transform: translateY(0);
     }
 
-}.theme-container {
+}
+
+.button-container{
+    width: 100%;
     display: flex;
-    justify-content: flex-end;
-    margin-bottom: 15px;
+    align-items: center;
+    justify-content: right;
+    align-self: last baseline;
 }
 
 #themeToggle {
@@ -172,7 +176,7 @@ footer {
     font-size: 14px;
 }
 .progress-section {
-    margin-top: 20px;
+    width: 100%;
 }
 
 progress {
@@ -209,6 +213,7 @@ progress {
     margin-bottom: 6px;
 }
 #greeting {
+    margin-top: 0;
     text-align: center;
     line-height: 1.4;
 }
